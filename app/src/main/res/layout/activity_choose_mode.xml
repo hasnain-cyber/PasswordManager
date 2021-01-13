@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background_choosemode"
+    tools:context=".ChooseMode">
+
+    <ImageView
+        android:id="@+id/passimage"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="252dp"
+        android:background="@android:color/holo_purple"
+        android:clickable="true"
+        android:contentDescription="@string/nodescription"
+        android:onClick="setPassImage"
+        android:src="@drawable/_01_key"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageimage"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="40dp"
+        android:background="@android:color/holo_orange_light"
+        android:contentDescription="@string/nodescription"
+        android:src="@drawable/_08_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/audioimage"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="52dp"
+        android:background="@android:color/holo_green_light"
+        android:contentDescription="@string/nodescription"
+        android:src="@drawable/_04_headphone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passimage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Password Manager</string>
+    <string name="welcometopasswordmanager">Welcome to password manager</string>
+    <string name="enterOrganisation">Enter Organisation</string>
+    <string name="enterUsername">Enter Username</string>
+    <string name="enterPassword">Enter Password</string>
+    <string name="save">Save</string>
+    <string name="hide">Hide</string>
+    <string name="show">Show</string>
+    <string name="entermasterpassword">Enter master password</string>
+    <string name="nodescription">No description</string>
+    <string name="scanfingerprint">SCAN FINGERPRINT</string>
+    <string name="fingerprintscannernotdetected">FINGERPRINT SCANNER NOT DETECTED</string>
+    <string name="nofingerprintenrolled">NO FINGERPRINT ENROLLED</string>
+    <string name="setNewPassword">Set new password</string>
+    <string name="verify">Verify</string>
+    <string name="changepassword">Change password</string>
+</resources>

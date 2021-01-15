@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, ChooseMode.class);
+        Intent intent = new Intent(this, PasswordActivity.class);
         startActivity(intent);
         this.finish(); // destroy login activity
     }
@@ -129,13 +129,12 @@ public class LoginActivity extends AppCompatActivity {
                 masterpassexists = false;
                 editor.remove("password");
                 editor.apply();
-                masterpass.setText("");Toast.makeText(LoginActivity.this, "Now enter new password!", Toast.LENGTH_SHORT).show();
+                masterpass.setText("");
+                Toast.makeText(LoginActivity.this, "Now enter new password!", Toast.LENGTH_SHORT).show();
                 initialSetup();
-            }
-            else
+            } else
                 Toast.makeText(LoginActivity.this, "Incorrect password!", Toast.LENGTH_SHORT).show();
-        }
-        else
+        } else
             Toast.makeText(LoginActivity.this, "Please enter old password!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class PasswordDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Student.db";
     public static final String TABLE_NAME = "student_table";
@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "PASSWORD";
 
 
-    public DatabaseHelper(@Nullable Context context) {
+    public PasswordDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 

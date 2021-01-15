@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class PasswordActivity extends AppCompatActivity {
-    DatabaseHelper myDb;
+    PasswordDatabaseHelper myDb;
     EditText editOrganisation, editUsername, editPassword;
     ListView listview;
     ArrayList<String> list = new ArrayList<>();
@@ -26,7 +26,7 @@ public class PasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myDb = new DatabaseHelper(this);
+        myDb = new PasswordDatabaseHelper(this);
         cursor = myDb.getCursor();
 
         while (cursor.moveToNext())

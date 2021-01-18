@@ -11,21 +11,26 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.passwordmanager.adapter.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 
 public class PasswordActivity extends AppCompatActivity {
-    PasswordDatabaseHelper myDb;
-    EditText editOrganisation, editUsername, editPassword;
-    ListView listview;
-    ArrayList<String> list = new ArrayList<>();
-    ArrayAdapter adapter;
-    Cursor cursor;
+
+    private PasswordDatabaseHelper myDb;
+    private EditText editOrganisation, editUsername, editPassword;
+    private Cursor cursor;
+    private ArrayList<String> list = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private RecyclerViewAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_password);
         myDb = new PasswordDatabaseHelper(this);
         cursor = myDb.getCursor();
 
@@ -35,41 +40,25 @@ public class PasswordActivity extends AppCompatActivity {
         editOrganisation = findViewById(R.id.enterOrganisation);
         editUsername = findViewById(R.id.enterUsername);
         editPassword = findViewById(R.id.enterPassword);
-        listview = findViewById(R.id.listView);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
-        listview.setAdapter(adapter);
-        listview.setVisibility(View.INVISIBLE);
-
-        listview.setOnItemLongClickListener((parent, view, position, id) -> {
-            String string = ((TextView) view).getText().toString();
-            String[] strings = string.split("\n");
-            new AlertDialog.Builder(PasswordActivity.this)
-                    .setIcon(android.R.drawable.ic_delete)
-                    .setTitle("Are you sure ?")
-                    .setMessage("Do you really want to delete this item ?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
-                        Toast.makeText(PasswordActivity.this, "Entry deleted!", Toast.LENGTH_SHORT).show();
-                        list.remove(position);
-                        myDb.deleteData(strings[0], strings[1], strings[2]);
-                        adapter.notifyDataSetChanged();
-                    })
-                    .setNegativeButton("No", null)
-                    .show();
-            return true;
-        });
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerViewAdapter = new RecyclerViewAdapter(PasswordActivity.this, list);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(PasswordActivity.this));
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setVisibility(View.INVISIBLE);
 
     }
 
     public void changeListVisibility(View view) {
-        if (listview.getVisibility() == View.VISIBLE)
-            listview.setVisibility(View.INVISIBLE);
-        else if (listview.getVisibility() == View.INVISIBLE)
-            listview.setVisibility(View.VISIBLE);
+        if (recyclerView.getVisibility() == View.VISIBLE)
+            recyclerView.setVisibility(View.INVISIBLE);
+        else if (recyclerView.getVisibility() == View.INVISIBLE)
+            recyclerView.setVisibility(View.VISIBLE);
     }
 
 
-    public void addData(View view) {
+    public void setSaveButton(View view) {
         cursor = myDb.getCursor();
         String t1 = editOrganisation.getText().toString().trim();
         String t2 = editUsername.getText().toString().trim();
@@ -89,7 +78,7 @@ public class PasswordActivity extends AppCompatActivity {
                 } else
                     Toast.makeText(PasswordActivity.this, "Some error occurred!", Toast.LENGTH_SHORT).show();
                 list.add(t1 + "\n" + t2 + "\n" + t3);
-                adapter.notifyDataSetChanged();
+                recyclerViewAdapter.notifyDataSetChanged();
             } else
                 Toast.makeText(PasswordActivity.this, "Entry already exists!", Toast.LENGTH_SHORT).show();
         } else

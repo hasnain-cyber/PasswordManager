@@ -1,4 +1,4 @@
-package com.example.passwordmanager.adapter;
+package com.example.passwordmanager;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,9 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.passwordmanager.PasswordActivity;
-import com.example.passwordmanager.R;
 
 import java.util.ArrayList;
 
@@ -62,7 +59,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     .setTitle("Are you sure ?")
                     .setMessage("Do you really want to delete this entry ?")
                     .setPositiveButton("Yes", (dialog, which) -> {
+                        int position = this.getAdapterPosition();
+                        String[]strings = arrayList.get(position).split("\n");
+                        arrayList.remove(position);
+                        notifyDataSetChanged();
                         Toast.makeText(context, "Entry deleted!", Toast.LENGTH_SHORT).show();
+                        new PasswordDatabaseHelper(context).deleteData(strings[0],strings[1],strings[2]);
                     })
                     .setNegativeButton("No", null)
                     .show();

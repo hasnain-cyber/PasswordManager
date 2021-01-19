@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.passwordmanager"
-        minSdkVersion 26
-        targetSdkVersion defaultMinSdkVersion2
+        minSdkVersion defaultMinSdkVersion1
+        targetSdkVersion defaultMinSdkVersion1
         versionCode 3
         versionName '3.2'
 

@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
         this.finish(); // destroy login activity
     }
 
-    public void loginButton(View view) {
+    public void setLoginbutton(View view) {
         String pass = masterpass.getText().toString();
         if (pass.equals("")) {
             if (masterpassexists)
@@ -122,9 +122,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void setChangePasswordButton(View view) {
-        String oldPass = masterpass.getText().toString();
-        if (!(oldPass.equals(""))) {
-            if (oldPass.equals(sharedPreferences.getString("password", "-1"))) {
+        String enteredPass = masterpass.getText().toString();
+        if (!(enteredPass.equals(""))) {
+            if (enteredPass.equals(sharedPreferences.getString("password", null))) {
                 masterpassexists = false;
                 editor.remove("password");
                 editor.apply();

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<full-backup-content>
-    domain="database"
-    path="Student.db"
-    domain="sharedpref"
-    path="password.xml"
-</full-backup-content>

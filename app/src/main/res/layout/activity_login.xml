@@ -39,24 +39,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="loginButton"
-        app:layout_constraintEnd_toEndOf="@+id/masterpass"
-        app:layout_constraintStart_toStartOf="@+id/masterpass"
-        app:layout_constraintTop_toBottomOf="@+id/masterpass" />
+        app:layout_constraintEnd_toEndOf="@+id/masterpassLayout"
+        app:layout_constraintStart_toStartOf="@+id/masterpassLayout"
+        app:layout_constraintTop_toBottomOf="@+id/masterpassLayout" />
 
-    <EditText
-        android:id="@+id/masterpass"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/masterpassLayout"
+        android:layout_width="228dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:textAlignment="center"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="LabelFor" />
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/masterpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/masterpassword"
+            android:importantForAutofill="no"
+            android:textAlignment="center"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/changePasswordButton"

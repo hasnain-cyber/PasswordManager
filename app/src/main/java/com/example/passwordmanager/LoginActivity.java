@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
+    @SuppressWarnings("deprecation")
     @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +71,9 @@ public class LoginActivity extends AppCompatActivity {
     private void initialSetup() {
         if (!sharedPreferences.contains("password")) {
             changePasswordButton.setVisibility(View.INVISIBLE);
-            masterpass.setHint(R.string.setNewPassword);
             masterpassexists = false;
             loginbutton.setText(R.string.save);
         } else {
-            masterpass.setHint(R.string.entermasterpassword);
             masterpassexists = true;
             loginbutton.setText(R.string.verify);
         }
@@ -104,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 if (newPass.equals("")) {
                     newPass = pass;
-                    Toast.makeText(LoginActivity.this, "Please confirm password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Please confirm new password!", Toast.LENGTH_SHORT).show();
                     masterpass.setText("");
                 } else {
                     if (newPass.equals(pass)) {

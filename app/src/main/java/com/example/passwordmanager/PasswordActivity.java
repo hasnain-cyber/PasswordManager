@@ -17,7 +17,7 @@ public class PasswordActivity extends AppCompatActivity {
     private PasswordDatabaseHelper myDb;
     private EditText editOrganisation, editUsername, editPassword;
     private Cursor cursor;
-    private ArrayList<String> list = new ArrayList<>();
+    private ArrayList<String> list;
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
 
@@ -27,6 +27,7 @@ public class PasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_password);
         myDb = new PasswordDatabaseHelper(this);
         cursor = myDb.getCursor();
+        list = new ArrayList<>();
 
         while (cursor.moveToNext())
             list.add(cursor.getString(0) + '\n' + cursor.getString(1) + '\n' + cursor.getString(2));

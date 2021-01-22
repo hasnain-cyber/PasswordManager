@@ -14,16 +14,15 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private final Context context;
     private final ArrayList<String> arrayList;
     int r = 30;
-    int g = 225;
+    int g = 200;
     int b = 30;
-    int shader = 5;
+    final int shader = 5;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> arrayList) {
         this.context = context;
@@ -44,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         r += shader;
         g += shader;
         b += shader;
-        if (g > 235) {
+        if (g > 225) {
             r = 30;
             g = 225;
             b = 30;
@@ -58,9 +57,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        Random random = new Random();
-        private TextView passwordData;
-        private CardView cardView;
+        private final TextView passwordData;
+        private final CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

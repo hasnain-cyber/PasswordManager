@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-
 public class PasswordDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Student.db";
@@ -41,10 +39,7 @@ public class PasswordDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_2, username);
         contentValues.put(COL_3, password);
         long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result == -1)
-            return false;
-        else
-            return true;
+        return result != -1;
     }
     public void deleteData(String org,String usr,String pass) {
         this.getWritableDatabase().delete(TABLE_NAME, "ORGANISATION=? AND USERNAME=? AND PASSWORD=?", new String[]{org, usr, pass});

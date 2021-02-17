@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Password Manager</string>
-    <string name="welcometopasswordmanager">Welcome to password manager</string>
     <string name="enterOrganisation">Enter Organisation</string>
     <string name="enterUsername">Enter Username</string>
     <string name="enterPassword">Enter Password</string>

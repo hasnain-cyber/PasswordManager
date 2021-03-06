@@ -22,7 +22,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     int r = 30;
     int g = 200;
     int b = 30;
-    final int shader = 5;
+    final int shader = 7; // rate of change of color in cards
 
     public RecyclerViewAdapter(Context context, ArrayList<String> arrayList) {
         this.context = context;
@@ -39,7 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.passwordData.setText(arrayList.get(position));
-        holder.cardView.setBackgroundColor(Color.rgb(r, g, b));
+        holder.cardView.setCardBackgroundColor(Color.rgb(r, g, b));
         r += shader;
         g += shader;
         b += shader;
